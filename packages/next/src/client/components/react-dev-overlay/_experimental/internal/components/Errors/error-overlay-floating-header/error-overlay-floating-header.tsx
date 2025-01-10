@@ -39,7 +39,7 @@ export const styles = css`
 
     width: 100%;
     position: absolute;
-    transform: translateY(-32px);
+    transform: translateY(-42px);
 
     outline: none;
 

@@ -166,8 +166,8 @@ export const styles = css`
     justify-content: center;
     align-items: center;
 
-    padding: var(--size-1);
-    gap: var(--size-2);
+    padding: 4px;
+    gap: 8px;
     background: var(--color-background-100);
     box-shadow: var(--shadow-sm);
 
@@ -180,7 +180,7 @@ export const styles = css`
     text-align: center;
     font-size: var(--size-font-small);
     font-weight: 500;
-    line-height: var(--size-4);
+    line-height: 16px;
   }
 
   .error-overlay-pagination-button {
@@ -188,7 +188,7 @@ export const styles = css`
     justify-content: center;
     align-items: center;
 
-    padding: var(--size-1);
+    padding: 4px;
     background: var(--color-gray-300);
 
     border: none;
