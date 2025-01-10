@@ -1,0 +1,5 @@
+{
+  "title": "Using App Router",
+  "description": "Features available in /app",
+  "pages": ["getting-started", "examples", "building-your-application", "api-reference", "architecture", "community"]
+}

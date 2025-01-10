@@ -1,0 +1,5 @@
+{
+  "title": "Using Pages Router",
+  "description": "Features available in /pages",
+  "pages": ["getting-started", "building-your-application", "api-reference", "architecture", "community"]
+}
