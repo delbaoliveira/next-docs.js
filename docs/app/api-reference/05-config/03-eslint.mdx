@@ -59,7 +59,7 @@ module.exports = {
   eslint: {
     dirs: ['pages', 'utils'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
   },
-}
+};
 ```
 
 Similarly, the `--dir` and `--file` flags can be used for `next lint` to lint specific directories and files:
@@ -72,13 +72,13 @@ next lint --dir pages --dir utils --file bar.js
 
 If you're using `eslint-plugin-next` in a project where Next.js isn't installed in your root directory (such as a monorepo), you can tell `eslint-plugin-next` where to find your Next.js application using the `settings` property in your `.eslintrc`:
 
-```mjs filename="eslint.config.mjs"
-import { FlatCompat } from '@eslint/eslintrc'
+```js filename="eslint.config.mjs"
+import { FlatCompat } from '@eslint/eslintrc';
 
 const compat = new FlatCompat({
   // import.meta.dirname is available after Node.js v20.11.0
   baseDirectory: import.meta.dirname,
-})
+});
 
 const eslintConfig = [
   ...compat.config({
@@ -89,9 +89,9 @@ const eslintConfig = [
       },
     },
   }),
-]
+];
 
-export default eslintConfig
+export default eslintConfig;
 ```
 
 `rootDir` can be a path (relative or absolute), a glob (i.e. `"packages/*/"`), or an array of paths and/or globs.
@@ -108,13 +108,13 @@ next lint --no-cache
 
 If you would like to modify or disable any rules provided by the supported plugins (`react`, `react-hooks`, `next`), you can directly change them using the `rules` property in your `.eslintrc`:
 
-```mjs filename="eslint.config.mjs"
-import { FlatCompat } from '@eslint/eslintrc'
+```js filename="eslint.config.mjs"
+import { FlatCompat } from '@eslint/eslintrc';
 
 const compat = new FlatCompat({
   // import.meta.dirname is available after Node.js v20.11.0
   baseDirectory: import.meta.dirname,
-})
+});
 
 const eslintConfig = [
   ...compat.config({
@@ -124,30 +124,30 @@ const eslintConfig = [
       '@next/next/no-page-custom-font': 'off',
     },
   }),
-]
+];
 
-export default eslintConfig
+export default eslintConfig;
 ```
 
 ### With Core Web Vitals
 
 The `next/core-web-vitals` rule set is enabled when `next lint` is run for the first time and the **strict** option is selected.
 
-```mjs filename="eslint.config.mjs"
-import { FlatCompat } from '@eslint/eslintrc'
+```js filename="eslint.config.mjs"
+import { FlatCompat } from '@eslint/eslintrc';
 
 const compat = new FlatCompat({
   // import.meta.dirname is available after Node.js v20.11.0
   baseDirectory: import.meta.dirname,
-})
+});
 
 const eslintConfig = [
   ...compat.config({
     extends: ['next/core-web-vitals'],
   }),
-]
+];
 
-export default eslintConfig
+export default eslintConfig;
 ```
 
 `next/core-web-vitals` updates `eslint-plugin-next` to error on a number of rules that are warnings by default if they affect [Core Web Vitals](https://web.dev/vitals/).
@@ -158,21 +158,21 @@ export default eslintConfig
 
 In addition to the Next.js ESLint rules, `create-next-app --typescript` will also add TypeScript-specific lint rules with `next/typescript` to your config:
 
-```mjs filename="eslint.config.mjs"
-import { FlatCompat } from '@eslint/eslintrc'
+```js filename="eslint.config.mjs"
+import { FlatCompat } from '@eslint/eslintrc';
 
 const compat = new FlatCompat({
   // import.meta.dirname is available after Node.js v20.11.0
   baseDirectory: import.meta.dirname,
-})
+});
 
 const eslintConfig = [
   ...compat.config({
     extends: ['next/core-web-vitals', 'next/typescript'],
   }),
-]
+];
 
-export default eslintConfig
+export default eslintConfig;
 ```
 
 Those rules are based on [`plugin:@typescript-eslint/recommended`](https://typescript-eslint.io/linting/configs#recommended).
@@ -196,21 +196,21 @@ bun add --dev eslint-config-prettier
 
 Then, add `prettier` to your existing ESLint config:
 
-```mjs filename="eslint.config.mjs"
-import { FlatCompat } from '@eslint/eslintrc'
+```js filename="eslint.config.mjs"
+import { FlatCompat } from '@eslint/eslintrc';
 
 const compat = new FlatCompat({
   // import.meta.dirname is available after Node.js v20.11.0
   baseDirectory: import.meta.dirname,
-})
+});
 
 const eslintConfig = [
   ...compat.config({
     extends: ['next', 'prettier'],
   }),
-]
+];
 
-export default eslintConfig
+export default eslintConfig;
 ```
 
 ### Running lint on staged files
@@ -218,16 +218,16 @@ export default eslintConfig
 If you would like to use `next lint` with [lint-staged](https://github.com/okonet/lint-staged) to run the linter on staged git files, you'll have to add the following to the `.lintstagedrc.js` file in the root of your project in order to specify usage of the `--file` flag.
 
 ```js filename=".lintstagedrc.js"
-const path = require('path')
+const path = require('path');
 
 const buildEslintCommand = (filenames) =>
   `next lint --fix --file ${filenames
     .map((f) => path.relative(process.cwd(), f))
-    .join(' --file ')}`
+    .join(' --file ')}`;
 
 module.exports = {
   '*.{js,jsx,ts,tsx}': [buildEslintCommand],
-}
+};
 ```
 
 ## Disabling linting during production builds
@@ -235,7 +235,7 @@ module.exports = {
 If you do not want ESLint to run during `next build`, you can set the `eslint.ignoreDuringBuilds` option in `next.config.js` to `true`:
 
 ```ts filename="next.config.ts" switcher
-import type { NextConfig } from 'next'
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   eslint: {
@@ -243,9 +243,9 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
 ```
 
 ```js filename="next.config.js" switcher
@@ -255,9 +255,9 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
 ```
 
 ### Migrating existing config
@@ -284,7 +284,7 @@ module.exports = {
     //...
     'plugin:@next/next/recommended',
   ],
-}
+};
 ```
 
 The plugin can be installed normally in your project without needing to run `next lint`:
@@ -305,23 +305,23 @@ This eliminates the risk of collisions or errors that can occur due to importing
 
 If you already use a separate ESLint configuration and want to include `eslint-config-next`, ensure that it is extended last after other configurations. For example:
 
-```mjs filename="eslint.config.mjs"
-import js from '@eslint/js'
-import { FlatCompat } from '@eslint/eslintrc'
+```js filename="eslint.config.mjs"
+import js from '@eslint/js';
+import { FlatCompat } from '@eslint/eslintrc';
 
 const compat = new FlatCompat({
   // import.meta.dirname is available after Node.js v20.11.0
   baseDirectory: import.meta.dirname,
   recommendedConfig: js.configs.recommended,
-})
+});
 
 const eslintConfig = [
   ...compat.config({
     extends: ['eslint:recommended', 'next'],
   }),
-]
+];
 
-export default eslintConfig
+export default eslintConfig;
 ```
 
 The `next` configuration already handles setting default values for the `parser`, `plugins` and `settings` properties. There is no need to manually re-declare any of these properties unless you need a different configuration for your use case.
